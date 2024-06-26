@@ -10,7 +10,8 @@ const DisplayComponent = ({ shoe }) => {
         Black: '/black.png',
         Red: '/red.png',
         Grey: '/grey.png',
-        Blue: '/blue.png'
+        Blue: '/blue.png',
+        Orange: '/orange.png'
     };
 
     const changeBgColorAndImage = (color) => {
@@ -19,9 +20,12 @@ const DisplayComponent = ({ shoe }) => {
     };
 
     return (
-        <>
-            <div className="Card" style={{ backgroundColor: selectedColor }}>
+        <body>
+            <div className="Card">
+                <div style={{ backgroundColor: selectedColor }}>
                 <img src={selectedImage} width={400} alt={shoe.title} />
+
+                </div>
                 <h1>{shoe.title}</h1>
                 <h3>{shoe.collection}</h3>
                 <p>{shoe.description}</p>
@@ -43,7 +47,7 @@ const DisplayComponent = ({ shoe }) => {
                 </p>
                 <p>Price: Kshs {shoe.price}</p>
             </div>
-        </>
+        </body>
     );
 };
 
