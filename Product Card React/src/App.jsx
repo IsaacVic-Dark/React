@@ -1,9 +1,9 @@
 import React from "react";
 import ProductsComponent from "./Components/productComponent";
-// import './App.css'
+import { CartProvider } from "./Components/cartContext";
+import CartComponent from "./Components/displayCartComponent";
 
 function App() {
-
   const initialProducts = [
     {
       title: "Jordan Proto Lyte",
@@ -89,7 +89,10 @@ function App() {
 
   return (
     <>
-      <ProductsComponent products={initialProducts}/>
+      <CartProvider>
+        <CartComponent />
+        <ProductsComponent products={initialProducts} />
+      </CartProvider>
     </>
   );
 }

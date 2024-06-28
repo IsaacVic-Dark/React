@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import '../card.css';
+import { CartContext } from './cartContext';
 
 const DisplayComponent = ({ shoe }) => {
     const [selectedColor, setSelectedColor] = useState('');
     const [selectedImage, setSelectedImage] = useState('/black.png'); // Default image
+    const { addToCart } = useContext(CartContext)
 
     const colors = shoe.availableColors;
     const colorToImageMap = {
@@ -20,7 +22,7 @@ const DisplayComponent = ({ shoe }) => {
     };
 
     return (
-        <body>
+        <div className='container'>
             <div className="Card">
                 <div style={{ backgroundColor: selectedColor }}>
                 <img src={selectedImage} width={400} alt={shoe.title} />
@@ -46,8 +48,9 @@ const DisplayComponent = ({ shoe }) => {
                     ))}
                 </p>
                 <p>Price: Kshs {shoe.price}</p>
+                <button onClick={() => addToCart(shoe)}>Add to Cart</button>
             </div>
-        </body>
+        </div>
     );
 };
 
